@@ -1,4 +1,4 @@
-const Item = require("../models/item-model");
+const Item = require("../models/itemModel");
 
 createItem = (req, res) => {
   const body = req.body;
@@ -10,7 +10,7 @@ createItem = (req, res) => {
     });
   }
 
-  body.supplier = req.supplierId;
+  body.tenant = req.tenantId;
   const item = new Item(body);
 
   if (!item) {
@@ -44,7 +44,7 @@ updateItem = (req, res) => {
     });
   }
 
-  Item.findOne({ _id: req.params.id, supplier: req.supplierId }).then(
+  Item.findOne({ _id: req.params.itemId, tenant: req.tenantId }).then(
     (item) => {
       if (!item) {
         return res.status(404).json({
@@ -76,7 +76,7 @@ updateItem = (req, res) => {
 };
 
 deleteItem = (req, res) => {
-  Item.findOneAndDelete({ _id: req.params.id, supplier: req.supplierId })
+  Item.findOneAndDelete({ _id: req.params.itemId, tenant: req.tenantId })
     .then((item) => {
       if (!item) {
         return res
@@ -92,7 +92,7 @@ deleteItem = (req, res) => {
 };
 
 getItemById = (req, res) => {
-  Item.findOne({ _id: req.params.id, supplier: req.supplierId })
+  Item.findOne({ _id: req.params.itemId, tenant: req.tenantId })
     .then((item) => {
       if (!item) {
         return res
@@ -108,7 +108,7 @@ getItemById = (req, res) => {
 };
 
 getItems = (req, res) => {
-  Item.find({ supplier: req.supplierId })
+  Item.find({ tenant: req.tenantId })
     .then((items) => {
       if (!items.length) {
         return res

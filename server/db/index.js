@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 
+const dotenv = require("dotenv");
+dotenv.config();
+
 mongoose
-  .connect("mongodb://127.0.0.1:27017/ITEMS", { useNewUrlParser: true })
+  .connect(`${process.env.DATABASE_CONNECTION_STRING}/ITEMS`, {
+    useNewUrlParser: true,
+  })
   .catch((e) => {
     console.error("Connection error", e.message);
   });
