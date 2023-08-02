@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 const auth = axios.create({
-  baseURL: "http://localhost:8000/auth",
+  baseURL: "https://fullMulti-api.onrender.com/auth",
 });
 
 export const insertItem = (payload) => api.post(`/item`, payload);
