@@ -11,7 +11,11 @@ const PORT = 8000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+const corsOptions = {
+  origin: "https://fullmulti.onrender.com",
+};
+
+app.use(cors(corsOptions));
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 

@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://fullMulti-api.onrender.com/api",
+  baseURL: "https://fullmultitenant-api.onrender.com/api",
 });
 
 const auth = axios.create({
-  baseURL: "https://fullMulti-api.onrender.com/auth",
+  baseURL: "https://fullmultitenant-api.onrender.com/auth",
 });
 
 export const insertItem = (payload) => api.post(`/item`, payload);
